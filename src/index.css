@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.menu li > *:not(ul, .menu-title, details, .btn):active, .menu li > *:not(ul, .menu-title, details, .btn).active, .menu li > details > summary:active{
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    color: #e07126;
+}
+
+.bannerContainer{
+    background-image: linear-gradient(to right, #353535c2, #353535c2), url("./assets/Banner.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+
+.font-roboto-title{
+    font-family: "Roboto Condensed", sans-serif;
+}
