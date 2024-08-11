@@ -2,7 +2,7 @@
 
 **Post Portal** is a sophisticated web application designed for individuals and communities to create, share, and engage with diverse content. Our platform offers a seamless experience for users to express ideas, connect with others, and participate in meaningful discussions.
 
-**Live Site:** https://post-portal-1b855.web.app/
+**Live Site:** https://post-portal48454.netlify.app
 
 ## Admin Credentials
 
