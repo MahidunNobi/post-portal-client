@@ -14,10 +14,10 @@ const Post = ({ post }) => {
     selectedTags,
   } = post;
   return (
-    <Link to={`/post/${_id}`}>
-      <div className="p-3 space-y-3 max-w-[650px] mx-auto border border-gray-200 rounded-lg overflow-hidden my-3">
+    <div className="p-3 space-y-3 max-w-[650px] mx-auto border border-gray-200 rounded-lg overflow-hidden my-3 w-full">
+      <Link to={`/post/${_id}`}>
         {/* -----Tags----- */}
-        <div className=" flex gap-2">
+        <div className=" flex gap-2 mb-3">
           {selectedTags.map((tag) => (
             <span
               key={tag._id}
@@ -28,7 +28,7 @@ const Post = ({ post }) => {
           ))}
         </div>
         {/* PersonalInfo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 my-6">
           <div className="avatar">
             <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img
@@ -54,8 +54,8 @@ const Post = ({ post }) => {
           </span>
           <span className="underline"> {comments.length} Comments</span>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

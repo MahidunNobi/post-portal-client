@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import AnnouncementImg from "../../../assets/Announcement.jpg";
-import Title from "../../SharedComponants/Title/Title";
 
 import SingleAnnouncement from "./SingleAnnouncement";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import LoadingSpinner from "../../SharedComponants/LoadingSpinner/LoadingSpinner";
 const Announcement = () => {
   const axiosPublic = useAxiosPublic();
   const { data: announcements = [], isLoading } = useQuery({
@@ -13,6 +13,16 @@ const Announcement = () => {
       return data;
     },
   });
+
+  // if (isLoading)
+  //   return (
+  //     <div className="min-h-screen grid place-content-center">
+  //       {" "}
+  //       <LoadingSpinner />{" "}
+  //     </div>
+  //   );
+
+  if (announcements.length < 1) return;
 
   return (
     <div className=" container mx-auto px-3 flex flex-col items-center md:items-start md:flex-row gap-6 my-12">
