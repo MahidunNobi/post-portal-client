@@ -18,6 +18,7 @@ import Announcement from "../Pages/DashoboardPages/Announcement/Announcement";
 import DashboardDivider from "../Pages/DashoboardPages/Dashboard/DashboardDivider";
 import Activities from "../Pages/DashoboardPages/Activities/Activities";
 import useAuth from "../hooks/useAuth";
+import Survey from "../Pages/DashoboardPages/Survey/Survey";
 
 const router = createBrowserRouter([
   {
@@ -98,6 +99,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <Announcement />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "survey",
+        element: (
+          <AdminRoute>
+            <Survey />
           </AdminRoute>
         ),
       },

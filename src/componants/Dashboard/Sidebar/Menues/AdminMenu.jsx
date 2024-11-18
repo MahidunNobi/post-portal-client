@@ -23,6 +23,7 @@ const AdminMenu = () => {
       <MenuItem route={"/dashboard/manage-users"} title={"Manage Users"} />
       <MenuItem route={"/dashboard/activities"} title={"Activities"} />
       <MenuItem route={"/dashboard/announcement"} title={"Announcement"} />
+      <MenuItem route={"/dashboard/survey"} title={"Survay"} />
     </>
   );
 };
