@@ -4,6 +4,7 @@ import AnnouncementImg from "../../../assets/Announcement.jpg";
 import SingleAnnouncement from "./SingleAnnouncement";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import LoadingSpinner from "../../SharedComponants/LoadingSpinner/LoadingSpinner";
+import Servay from "./Servay/Servay";
 const Announcement = () => {
   const axiosPublic = useAxiosPublic();
   const { data: announcements = [], isLoading } = useQuery({
@@ -37,6 +38,8 @@ const Announcement = () => {
           {announcements.map((ann) => (
             <SingleAnnouncement key={ann._id} announcement={ann} />
           ))}
+
+          <Servay />
         </div>
       </div>
     </div>
