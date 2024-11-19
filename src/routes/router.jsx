@@ -19,6 +19,7 @@ import DashboardDivider from "../Pages/DashoboardPages/Dashboard/DashboardDivide
 import Activities from "../Pages/DashoboardPages/Activities/Activities";
 import useAuth from "../hooks/useAuth";
 import Survey from "../Pages/DashoboardPages/Survey/Survey";
+import AddSurvey from "../Pages/DashoboardPages/Survey/AddSurvey";
 
 const router = createBrowserRouter([
   {
@@ -107,6 +108,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <Survey />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "add-survey",
+        element: (
+          <AdminRoute>
+            <AddSurvey />
           </AdminRoute>
         ),
       },

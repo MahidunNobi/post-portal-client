@@ -1,12 +1,15 @@
+import { Link } from "react-router-dom";
+
 const Survey = () => {
   return (
     <main className="p-6">
       <div className="flex justify-between items-center my-10">
         <h1 className="text-4xl font-bold"> Surveys</h1>
-
-        <button className="btn bg-primary-orange border-none text-white">
-          New Survey
-        </button>
+        <Link to={"/dashboard/add-survey"}>
+          <button className="btn bg-primary-orange border-none text-white">
+            New Survey
+          </button>
+        </Link>
       </div>
       <div className="overflow-x-auto">
         <table className="table">

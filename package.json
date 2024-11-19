@@ -25,7 +25,8 @@
     "react-select": "^5.8.0",
     "react-share": "^5.1.0",
     "recharts": "^2.12.7",
-    "sweetalert2": "^11.11.1"
+    "sweetalert2": "^11.11.1",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
