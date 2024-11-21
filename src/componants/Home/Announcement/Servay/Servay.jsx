@@ -72,7 +72,7 @@ const Servay = ({
             onClick={() => handleVote(op)}
           >
             {op.name}
-            {selected && <span> 76% </span>}
+            {selected && <span> {op.votes} </span>}
           </button>
         ))}
       </div>

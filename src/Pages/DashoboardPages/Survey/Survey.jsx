@@ -1,6 +1,28 @@
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import LoadingSpinner from "../../../componants/SharedComponants/LoadingSpinner/LoadingSpinner";
 
 const Survey = () => {
+  const axiosSecure = useAxiosSecure();
+
+  const { data: surveys = [], isLoading } = useQuery({
+    queryKey: ["surveys"],
+    queryFn: async () => {
+      const { data } = await axiosSecure("/surveys");
+      return data;
+    },
+  });
+
+  if (isLoading)
+    return (
+      <div className="min-h-[95vh] grid place-content-center">
+        <LoadingSpinner />
+      </div>
+    );
+
+  console.log(surveys);
+
   return (
     <main className="p-6">
       <div className="flex justify-between items-center my-10">
@@ -17,33 +39,35 @@ const Survey = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Survey Title</th>
+              <th>Options</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-            </tr>
-            {/* row 2 */}
-            <tr className="hover">
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            {/* row 3 */}
-            <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
-            </tr>
+            {surveys.map((survey, i) => (
+              <tr key={survey._id}>
+                <th>{i + 1}</th>
+                <td>{survey.survey_title}</td>
+                <td className="flex flex-col">
+                  {survey.options.map((op) => (
+                    <span className="mt-2" key={op._id}>
+                      {op.name} ({op.votes})
+                    </span>
+                  ))}
+                </td>
+                <td>
+                  {survey.end_date > Date.now() ? (
+                    <span className="text-green-600 font-semibold">Active</span>
+                  ) : (
+                    <span className="text-amber-500 font-semibold">
+                      Completed
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
