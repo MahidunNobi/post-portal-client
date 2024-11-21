@@ -3,6 +3,7 @@ import { timeElapsed } from "../../../../utils";
 import useAuth from "../../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const Servay = ({
   id,
@@ -16,10 +17,29 @@ const Servay = ({
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
 
+  // Checking if the user is already voted or not
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["user_vote"],
+    queryFn: async () => {
+      const { data } = await axiosSecure.post(`/vote-availability`, {
+        survey_id: id,
+      });
+      if (data.data) {
+        setSelected(data.data[0].option[0].name);
+      }
+      return data;
+    },
+  });
+
   const handleVote = async (Option) => {
     // Validating if the user is logged in or not
     if (!user) {
       return navigate("/login");
+    }
+
+    // Cecking if already voted or not
+    if (selected) {
+      return;
     }
 
     const reqObj = {
