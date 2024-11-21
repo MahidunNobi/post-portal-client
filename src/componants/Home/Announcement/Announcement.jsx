@@ -14,6 +14,13 @@ const Announcement = () => {
       return data;
     },
   });
+  const { data: survey = [], isLoading: surveyIsLoading } = useQuery({
+    queryKey: ["survey"],
+    queryFn: async () => {
+      const { data } = await axiosPublic("/survey");
+      return data;
+    },
+  });
 
   // if (isLoading)
   //   return (
@@ -23,7 +30,7 @@ const Announcement = () => {
   //     </div>
   //   );
 
-  if (announcements.length < 1) return;
+  if (announcements.length < 1 && survey.length < 1) return;
 
   return (
     <div className=" container mx-auto px-3 flex flex-col items-center md:items-start md:flex-row gap-6 my-12">
@@ -39,7 +46,16 @@ const Announcement = () => {
             <SingleAnnouncement key={ann._id} announcement={ann} />
           ))}
 
-          <Servay />
+          {survey.map((sur) => (
+            <Servay
+              key={sur._id}
+              id={sur._id}
+              survey_title={sur.survey_title}
+              survey_desc={sur.survey_desc}
+              survey_options={sur.options}
+              start_date={sur.start_date}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -35,8 +35,6 @@ const Home = () => {
     setSortPopularity(true);
   };
 
-  console.log(posts);
-
   const handleSearch = async () => {
     const tagIds = selectedTags.map((tag) => tag._id);
     const res = await axiosPublic(
